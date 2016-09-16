@@ -1,44 +1,53 @@
-var num1
-var num2
-var operator
-var display = document.getElementById('display');
+var num1;
+var num2;
+var operator;
+var screen = document.getElementById('screen');
 
-
-function getNum(n){
-  if (num1 == null) {
-    num1 = n;
+function getNum(n) {
+  if (operator === undefined) {
+    num1 = parseInt(n);
+    screen.innerHTML = num1;
   } else {
-    num2 = n;
+    num2 = parseInt(n);
+    screen.innerHTML = num2;
   }
-  display.value = n;
 }
 
 // Do maths
-function add(){
-  display.value = num1 + num2;
+function add() {
+  screen.innerHTML = (num1 + num2);
 }
-function subtract(){
-  display.value = num1 - num2;
+
+function subtract() {
+  screen.innerHTML = (num1 - num2);
 }
-function multiply(){
-  display.value = num1 * num2;
+
+function multiply() {
+  screen.innerHTML = (num1 * num2);
 }
-function divide(){
-  display.value = num1 / num2;
+
+function divide() {
+  if (num2 == 0) {
+    alert("You can't divide by 0. Because I said so!!");
+  } else {
+  screen.innerHTML = (num1 / num2);
+  }
 }
+
 
 // Set an if statement that concatenate digits into num1 or num2 if an operator hasn't been picked yet.
 
 function getOperator(o) {
   operator = o;
-  display.value = o;
+  screen.innerHTML = operator;
 }
+
 
 function calculate() {
   if (!num1 || !num2) {
     alert("You must pick a number!")
-  } else{
-    switch(operator) {
+  } else {
+    switch (operator) {
       case '+':
         add();
         break;
@@ -51,20 +60,18 @@ function calculate() {
       case '/':
         divide();
         break;
+      case 'CLR':
+        erase();
+        break;
     }
-
-    //TODO erase();
-    // create a Clear button
-    // Replace num1 with the result of the current equation
-    // Set num2 and operator to null
-
   }
 }
 
 function erase() {
-  num1 = null;
-  num2 = null;
-  operator = null;
+  screen.innerHTML = '';
+  num1 = undefined;
+  operator = undefined;
+  num2 = undefined;
 }
 
 //

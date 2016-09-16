@@ -3,7 +3,6 @@
   <meta charset="UTF-8">
   <title>Sean's JS calculator</title>
     <link rel='stylesheet' href='stylesheets/style.css' type='text/css' />
-    <script type='text/javascript' src='javascripts/app.js'></script>
   <!-- BootStrap CDN -->
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -13,37 +12,44 @@
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 
 </head>
 <body>
   <div class="container">
   <div class="col-md-12">
-    <input type="text_field" id="display" class="form-control" placeholder="Entry" required="">
+    <label id="screen" type="text_field" class="form-control" placeholder="Entry" required="">
   </div>
     <div class="col-md-12">
-      <button id="seven" type="button" onClick="getNum(7)" class="btn btn-lg btn-primary col-md-3 col-xs-3">7</button>
-      <button id="eight" type="button" onClick="getNum(8)" class="btn btn-lg btn-primary col-md-3 col-xs-3">8</button>
-      <button id="nine" type="button"  onClick="getNum(9)" class="btn btn-lg btn-primary col-md-3 col-xs-3">9</button>
-      <button id="divide" type="button" onClick="getOperator('/')" class="btn btn-lg btn-warning col-md-3 col-xs-3">/</button>
+      <button id="seven" type="button" onClick="getNum(this.innerHTML)" class="btn btn-lg btn-primary col-md-3 col-xs-3">7</button>
+      <button id="eight" type="button" onClick="getNum(this.innerHTML)" class="btn btn-lg btn-primary col-md-3 col-xs-3">8</button>
+      <button id="nine" type="button"  onClick="getNum(this.innerHTML)" class="btn btn-lg btn-primary col-md-3 col-xs-3">9</button>
+      <button id="divide" type="button" onClick="getOperator(this.innerHTML)" class="btn btn-lg btn-warning col-md-3 col-xs-3">/</button>
     </div>
     <div class="col-md-12">
-      <button id="four" type="button" onClick="getNum(4)" class="btn btn-lg btn-primary col-md-3 col-xs-3">4</button>
-      <button id="five" type="button" onClick="getNum(5)" class="btn btn-lg btn-primary col-md-3 col-xs-3">5</button>
-      <button id="six" type="button" onClick="getNum(6)" class="btn btn-lg btn-primary col-md-3 col-xs-3">6</button>
-      <button id="times" type="button" onClick="getOperator('/')" class="btn btn-lg btn-warning col-md-3 col-xs-3">*</button>
+      <button id="four" type="button" onClick="getNum(this.innerHTML)" class="btn btn-lg btn-primary col-md-3 col-xs-3">4</button>
+      <button id="five" type="button" onClick="getNum(this.innerHTML)" class="btn btn-lg btn-primary col-md-3 col-xs-3">5</button>
+      <button id="six" type="button" onClick="getNum(this.innerHTML)" class="btn btn-lg btn-primary col-md-3 col-xs-3">6</button>
+      <button id="times" type="button" onClick="getOperator(this.innerHTML)" class="btn btn-lg btn-warning col-md-3 col-xs-3">*</button>
     </div>
     <div class="col-md-12">
-      <button id="one" type="button" onClick="getNum(1)" class="btn btn-lg btn-primary col-md-3 col-xs-3">1</button>
-      <button id="two" type="button" onClick="getNum(2)" class="btn btn-lg btn-primary col-md-3 col-xs-3">2</button>
-      <button id="three" type="button" onClick="getNum(3)" class="btn btn-lg btn-primary col-md-3 col-xs-3">3</button>
-      <button id="minus" type="button" onClick="getOperator('-')" class="btn btn-lg btn-warning col-md-3 col-xs-3">-</button>
+      <button id="one" type="button" onClick="getNum(this.innerHTML)" class="btn btn-lg btn-primary col-md-3 col-xs-3">1</button>
+      <button id="two" type="button" onClick="getNum(this.innerHTML)" class="btn btn-lg btn-primary col-md-3 col-xs-3">2</button>
+      <button id="three" type="button" onClick="getNum(this.innerHTML)" class="btn btn-lg btn-primary col-md-3 col-xs-3">3</button>
+      <button id="minus" type="button" onClick="getOperator(this.innerHTML)" class="btn btn-lg btn-warning col-md-3 col-xs-3">-</button>
     </div>
     <div class="col-md-12">
-      <button id="zero" type="button" onClick="getNum(0)" class="btn btn-lg btn-primary col-md-3 col-xs-3">0</button>
+      <button id="zero" type="button" onClick="getNum(this.innerHTML)" class="btn btn-lg btn-primary col-md-3 col-xs-3">0</button>
       <button id="decimal" type="button" onClick="getOperator('.')" class="btn btn-lg btn-primary col-md-3 col-xs-3">.</button>
       <button id="equals" type="button" onClick="calculate()" class="btn btn-lg btn-success col-md-3 col-xs-3">=</button>
-      <button id="plus" type="button" onClick="getOperator('+')" class="btn btn-lg btn-warning col-md-3 col-xs-3">+</button>
+      <button id="plus" type="button" onClick="getOperator(this.innerHTML)" class="btn btn-lg btn-warning col-md-3 col-xs-3">+</button>
+    </div>
+    <div class="col-md-12">
+      <button id="clear" type="button" onClick="erase('CLR')" class="btn btn-lg btn-danger col-md-12 col-xs-12">CLEAR!!!</button>
     </div>
   </div>
+  <script type='text/javascript' src='javascripts/app.js'></script>
+
 </body>
 </html>
